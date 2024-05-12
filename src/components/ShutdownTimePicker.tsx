@@ -22,16 +22,11 @@ function convertTimeToDate(time: string): Date {
     return date
 }
 
-
 const ShutdownTimePicker = () => {
     const [shutdownTime, setShutdownTime] = useState(new Date());
     const [isDelayMode, setIsDelayMode] = useState(false);
 
-    const handleSubmit = () => {
-        console.log(shutdownTime);
-    };
-
-    const handleChange = (event: React.BaseSyntheticEvent) => {
+    const handleTimeChange = (event: React.BaseSyntheticEvent) => {
         const timeInput = event.target.value
         console.log('time input is ' + timeInput);
 
@@ -43,18 +38,22 @@ const ShutdownTimePicker = () => {
         console.log('shutdown time is ' + shutdownTime);
     };
 
+    const handleSubmit = () => {
+        window.electronAPI.shutdownAtDate(shutdownTime)
+    };
+
     return (
         <div>
             <input
                 type="time"
-                onChange={handleChange}
+                onChange={handleTimeChange}
                 pattern="[0-9]{2}:[0-9]{2}"
             />
             <SliderButton
                 isDelayMode={isDelayMode}
                 onToggle={setIsDelayMode}
             />
-            <button onClick={handleSubmit}>Send Shutdown Command</button>
+            <button id='submit-btn' onClick={handleSubmit}>Send Shutdown Command</button>
         </div>
     );
 
