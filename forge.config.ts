@@ -13,8 +13,22 @@ const config: ForgeConfig = {
     icon: './assets/icon'
   },
   rebuildConfig: {},
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'eomoruyi',
+          name: 'offie'
+        },
+        prerelease: true
+      }
+    }
+  ],
   makers: [
-    new MakerSquirrel({}),
+    new MakerSquirrel({
+      setupIcon: './assets/icon.ico'
+    }),
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
     new MakerDeb({})
