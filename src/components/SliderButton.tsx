@@ -1,5 +1,3 @@
-import "./SliderButton.css"; // Make sure to create this CSS file
-
 type SliderButtonProps = {
     isDelayMode: boolean;
     onToggle: (isDelayMode: boolean) => void;
@@ -14,7 +12,7 @@ const SliderButton: React.FC<SliderButtonProps> = ({
     };
 
     return (
-        <div className="slider-container" onClick={toggleIcon}>
+        <div className="cursor-pointer transition" onClick={toggleIcon}>
             <div
                 className={`slider-icon ${isDelayMode ? "hourglass" : "clock"}`}
             >

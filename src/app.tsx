@@ -5,7 +5,7 @@ import ShutdownAborter from "./components/ShutdownAborter";
 
 const App = () => {
     return (
-        <div className="flex flex-col items-center justify-end gap-4">
+        <div className="flex h-screen flex-col items-center justify-center gap-4">
             <DigitalClock />
             <ShutdownTimePicker />
             <ShutdownAborter />
