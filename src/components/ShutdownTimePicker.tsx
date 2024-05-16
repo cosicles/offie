@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import SliderButton from './SliderButton';
+import SliderButton from "./SliderButton";
 
 function splitTime(time: string): number[] {
-    return time.split(':').map(Number);
+    return time.split(":").map(Number);
 }
 
 /** Converts a delay expressed in hh:mm in seconds */
@@ -29,8 +29,8 @@ const ShutdownTimePicker = () => {
     const [isDelayMode, setIsDelayMode] = useState(false);
 
     const handleTimeChange = (event: React.BaseSyntheticEvent) => {
-        const timeInput = event.target.value
-        console.log('time input is ' + timeInput);
+        const timeInput = event.target.value;
+        console.log("time input is " + timeInput);
 
         let delayInSeconds;
         if (isDelayMode) {
@@ -43,28 +43,26 @@ const ShutdownTimePicker = () => {
 
         setShutdownTimeout(delayInSeconds);
 
-        console.log('shutdown time is ' + shutdownTimeout);
+        console.log("shutdown time is " + shutdownTimeout);
     };
 
     const handleSubmit = () => {
-        window.electronAPI.shutdownAtTimeout(shutdownTimeout)
+        window.electronAPI.shutdownAtTimeout(shutdownTimeout);
     };
 
     return (
-        <div>
+        <div className="rounded bg-blue-500 px-4 py-2 text-white">
             <input
                 type="time"
                 onChange={handleTimeChange}
                 pattern="[0-9]{2}:[0-9]{2}"
             />
-            <SliderButton
-                isDelayMode={isDelayMode}
-                onToggle={setIsDelayMode}
-            />
-            <button id='submit-btn' onClick={handleSubmit}>Send Shutdown Command</button>
+            <SliderButton isDelayMode={isDelayMode} onToggle={setIsDelayMode} />
+            <button id="submit-btn" onClick={handleSubmit}>
+                Send Shutdown Command
+            </button>
         </div>
     );
-
-}
+};
 
 export default ShutdownTimePicker;

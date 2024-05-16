@@ -1,18 +1,17 @@
-import { createRoot } from 'react-dom/client';
-import DigitalClock from './components/ClockDisplay';
-import ShutdownTimePicker from './components/ShutdownTimePicker';
-import ShutdownAborter from './components/ShutdownAborter';
+import { createRoot } from "react-dom/client";
+import DigitalClock from "./components/ClockDisplay";
+import ShutdownTimePicker from "./components/ShutdownTimePicker";
+import ShutdownAborter from "./components/ShutdownAborter";
 
 const App = () => {
     return (
-        <div class="flex justify-center items-center">
-            <h1> Welcome to Offie!</h1>
+        <div className="flex flex-col items-center justify-end gap-4">
             <DigitalClock />
             <ShutdownTimePicker />
             <ShutdownAborter />
         </div>
-    )
+    );
 };
 
-const root = createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById("root"));
 root.render(<App />);

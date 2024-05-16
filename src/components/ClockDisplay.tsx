@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const DigitalClock = () => {
     // State to store the current time
@@ -15,11 +15,15 @@ const DigitalClock = () => {
     }, []);
 
     // Format the time as a string
-    const timeString = currentTime.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit' });
+    const timeString = currentTime.toLocaleTimeString("en-US", {
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+    });
 
     // Render the time
     return (
-        <div className="digital-clock">
+        <div className="text-5xl font-bold">
             <span>{timeString}</span>
         </div>
     );
