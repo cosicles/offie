@@ -23,7 +23,7 @@ const DigitalClock = () => {
 
     // Render the time
     return (
-        <div className="font-mono text-8xl text-amber-700 opacity-75">
+        <div className="select-none font-mono text-8xl text-amber-700 opacity-75">
             <span>{timeString}</span>
         </div>
     );

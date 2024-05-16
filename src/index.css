@@ -9,3 +9,7 @@ body {
   max-width: 38rem;
   padding: 2rem;
 }
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(33%) sepia(100%) saturate(600%) hue-rotate(11deg) brightness(92%) contrast(88%);
+}
