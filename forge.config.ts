@@ -21,8 +21,10 @@ const config: ForgeConfig = {
           owner: 'eomoruyi',
           name: 'offie'
         },
-        prerelease: true
-      }
+        prerelease: true,
+        authToken: process.env.GITHUB_TOKEN,
+        draft: true,
+      },
     }
   ],
   makers: [

@@ -1,9 +1,16 @@
 {
   "name": "offie",
   "productName": "offie",
+  "author": "cosicles",
   "version": "1.0.0",
   "description": "Offie is your companion to take time off the computer",
   "main": ".vite/build/main.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "url": "https://github.com/cosicles/offie.git"
+  },
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
