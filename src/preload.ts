@@ -3,5 +3,6 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('electronAPI', {
-    shutdownAtTimeout: (timeout: number) => ipcRenderer.send('call-shutdown', timeout)
+    shutdownAtTimeout: (timeout: number) => ipcRenderer.send('call-shutdown', timeout),
+    abortShutdown: () => ipcRenderer.send('abort-shutdown')
 })

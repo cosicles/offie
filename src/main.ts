@@ -34,6 +34,21 @@ function shutdownAtTimeout(event: IpcMainEvent, timeout: number): void {
 
   exec(`shutdown /s /t ${timeout}`, (error, stdout, stderr) => {
     if (error) {
+      // TODO handle already existing shutdown scheduled error
+      console.error(`Error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      return;
+    }
+    console.log(`Stdout: ${stdout}`);
+  });
+}
+
+function abortShutdown(event: IpcMainEvent): void {
+  exec('shutdown /a', (error, stdout, stderr) => {
+    if (error) {
       console.error(`Error: ${error.message}`);
       return;
     }
@@ -51,6 +66,7 @@ function shutdownAtTimeout(event: IpcMainEvent, timeout: number): void {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   ipcMain.on('call-shutdown', shutdownAtTimeout);
+  ipcMain.on('abort-shutdown', abortShutdown);
   createWindow()
 })
 
