@@ -51,7 +51,7 @@ const ShutdownTimePicker = () => {
     };
 
     return (
-        <div className="flex flex-row space-x-4">
+        <div className="flex flex-row items-center space-x-4">
             <div className="flex items-center space-x-2 rounded bg-amber-100 bg-opacity-70 px-4 py-2 text-lg hover:shadow-md hover:shadow-amber-300">
                 <input
                     className="form-input border-b bg-transparent px-4 py-3 transition duration-200 ease-in-out focus:border-b-amber-700 focus:outline-none"
@@ -65,23 +65,25 @@ const ShutdownTimePicker = () => {
                 />
             </div>
             <button
-                className="flex items-center space-x-2 rounded bg-amber-100 bg-opacity-70 px-4 py-2 text-lg font-medium text-amber-800 hover:shadow-md hover:shadow-amber-300"
-                id="submit-btn"
+                className="btn btn-primary text-base-100"
                 onClick={handleSubmit}
             >
                 <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="32px"
+                    height="32px"
+                    viewBox="0 0 24 24"
                     fill="currentColor"
-                    viewBox="0 0 16 16"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
-                    <path
-                        fillRule="evenodd"
-                        d="M2.23 4.35A6 6 0 0 0 2 6c0 1.691.7 3.22 1.826 4.31.203.196.359.4.453.619l.762 1.769A.5.5 0 0 0 5.5 13a.5.5 0 0 0 0 1 .5.5 0 0 0 0 1l.224.447a1 1 0 0 0 .894.553h2.764a1 1 0 0 0 .894-.553L10.5 15a.5.5 0 0 0 0-1 .5.5 0 0 0 0-1 .5.5 0 0 0 .288-.091L9.878 12H5.83l-.632-1.467a3 3 0 0 0-.676-.941 4.98 4.98 0 0 1-1.455-4.405zm1.588-2.653.708.707a5 5 0 0 1 7.07 7.07l.707.707a6 6 0 0 0-8.484-8.484zm-2.172-.051a.5.5 0 0 1 .708 0l12 12a.5.5 0 0 1-.708.708l-12-12a.5.5 0 0 1 0-.708"
-                    />
+                    <g
+                        strokeWidth="0"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <path d="M12.75 2C12.75 1.58579 12.4142 1.25 12 1.25C11.5858 1.25 11.25 1.58579 11.25 2V6C11.25 6.41421 11.5858 6.75 12 6.75C12.4142 6.75 12.75 6.41421 12.75 6V2Z"></path>
+                        <path d="M8.7919 4.39678C9.17345 4.23557 9.35208 3.79557 9.19087 3.41402C9.02966 3.03246 8.58966 2.85384 8.2081 3.01505C4.70832 4.49372 2.25 7.95891 2.25 12C2.25 17.3848 6.61522 21.75 12 21.75C17.3848 21.75 21.75 17.3848 21.75 12C21.75 7.95891 19.2917 4.49372 15.7919 3.01505C15.4103 2.85384 14.9703 3.03246 14.8091 3.41402C14.6479 3.79557 14.8265 4.23557 15.2081 4.39678C18.1722 5.64913 20.25 8.58279 20.25 12C20.25 16.5564 16.5563 20.25 12 20.25C7.44365 20.25 3.75 16.5564 3.75 12C3.75 8.58279 5.82779 5.64913 8.7919 4.39678Z"></path>
+                    </g>
                 </svg>
-                <span>Submit</span>
             </button>
         </div>
     );

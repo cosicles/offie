@@ -4,7 +4,7 @@ const ShutdownAborter = () => {
     };
 
     return (
-        <div className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
+        <div className="btn btn-ghost btn-xs sm:btn-sm md:btn-md lg:btn-lg">
             <button
                 className="flex items-center justify-center space-x-2"
                 onClick={handleAbort}
