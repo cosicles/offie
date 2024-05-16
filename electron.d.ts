@@ -2,7 +2,7 @@
 declare global {
     interface Window {
         electronAPI: {
-            shutdownAtDate: (date: Date) => void;
+            shutdownAtTimeout: (timeout: number) => void;
         };
     }
 }

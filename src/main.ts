@@ -26,40 +26,31 @@ const createWindow = (): void => {
   }
 };
 
-
-// Calculates the delay in seconds until the specified date and time
-function getDelayUntil(targetDate: Date): number {
-  const now = new Date();
-  const delayInMilliseconds = targetDate.getTime() - now.getTime();
-  if (delayInMilliseconds < 0) {
+function shutdownAtTimeout(event: IpcMainEvent, timeout: number): void {
+  if (timeout <= 0) {
     console.log('shutdown time is in the past, skipping...');
+    return
   }
-  const delayInSeconds = delayInMilliseconds / 1000;
-  return Math.floor(delayInSeconds)
-}
 
-function shutdownAtDate(event: IpcMainEvent, date: Date): void {
-  const delay = getDelayUntil(date)
-  setTimeout(() => {
-    exec(`shutdown /s /t ${delay}`, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error: ${error.message}`);
-        return;
-      }
-      if (stderr) {
-        console.error(`Stderr: ${stderr}`);
-        return;
-      }
-      console.log(`Stdout: ${stdout}`);
-    });
-  }, delay);
+  exec(`shutdown /s /t ${timeout}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Stderr: ${stderr}`);
+      return;
+    }
+    console.log(`Stdout: ${stdout}`);
+  });
+
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  ipcMain.on('call-shutdown', shutdownAtDate);
+  ipcMain.on('call-shutdown', shutdownAtTimeout);
   createWindow()
 })
 

@@ -6,40 +6,48 @@ function splitTime(time: string): number[] {
     return time.split(':').map(Number);
 }
 
-function addTimeToNow(time: string): Date {
+/** Converts a delay expressed in hh:mm in seconds */
+function convertDelayToSeconds(time: string): number {
     const [hours, minutes] = splitTime(time);
-    const newDate = new Date();
-    newDate.setHours(newDate.getHours() + hours);
-    newDate.setMinutes(newDate.getMinutes() + minutes);
-    return newDate;
+    return hours * 3600 + minutes * 60;
 }
 
-function convertTimeToDate(time: string): Date {
-    const [hours, minutes] = splitTime(time);
-    const date = new Date();
-    date.setHours(hours);
-    date.setMinutes(minutes);
-    return date
+/** Converts a future time to a delay in seconds until now */
+function convertFutureTimeToDelay(futureTime: string): number {
+    const future = new Date();
+    const [hours, minutes] = splitTime(futureTime);
+    future.setHours(hours);
+    future.setMinutes(minutes);
+
+    const now = new Date();
+
+    return (future.getTime() - now.getTime()) / 1000;
 }
 
 const ShutdownTimePicker = () => {
-    const [shutdownTime, setShutdownTime] = useState(new Date());
+    const [shutdownTimeout, setShutdownTimeout] = useState(0);
     const [isDelayMode, setIsDelayMode] = useState(false);
 
     const handleTimeChange = (event: React.BaseSyntheticEvent) => {
         const timeInput = event.target.value
         console.log('time input is ' + timeInput);
 
+        let delayInSeconds;
         if (isDelayMode) {
-            setShutdownTime(addTimeToNow(timeInput));
+            delayInSeconds = convertDelayToSeconds(timeInput);
         } else {
-            setShutdownTime(convertTimeToDate(timeInput));
+            delayInSeconds = convertFutureTimeToDelay(timeInput);
         }
-        console.log('shutdown time is ' + shutdownTime);
+
+        //TODO handle negative delay
+
+        setShutdownTimeout(delayInSeconds);
+
+        console.log('shutdown time is ' + shutdownTimeout);
     };
 
     const handleSubmit = () => {
-        window.electronAPI.shutdownAtDate(shutdownTime)
+        window.electronAPI.shutdownAtTimeout(shutdownTimeout)
     };
 
     return (
