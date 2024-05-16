@@ -18,14 +18,14 @@ const SliderButton: React.FC<SliderButtonProps> = ({
         >
             <span
                 className="tooltip tooltip-secondary"
-                data-tip="Offie shuts down at the hour of choice"
+                data-tip="Offie schedules the shutdown at the hour of your choice"
             >
                 ⏰
             </span>
             <input type="checkbox" className="toggle" />
             <span
                 className="tooltip tooltip-secondary"
-                data-tip="Offie shuts down after the delay of choice"
+                data-tip="Offie schedules the shutdown after the delay of choice"
             >
                 ⌛
             </span>
