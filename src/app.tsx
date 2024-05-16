@@ -5,7 +5,7 @@ import ShutdownAborter from './components/ShutdownAborter';
 
 const App = () => {
     return (
-        <div>
+        <div class="flex justify-center items-center">
             <h1> Welcome to Offie!</h1>
             <DigitalClock />
             <ShutdownTimePicker />
