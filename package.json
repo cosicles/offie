@@ -39,6 +39,7 @@
   },
   "keywords": [],
   "license": "MIT",
+  "author": "eomoruyi",
   "dependencies": {
     "@types/react": "18",
     "@types/react-dom": "18",
