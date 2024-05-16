@@ -12,12 +12,23 @@ const SliderButton: React.FC<SliderButtonProps> = ({
     };
 
     return (
-        <div className="cursor-pointer transition" onClick={toggleIcon}>
-            <div
-                className={`slider-icon ${isDelayMode ? "hourglass" : "clock"}`}
+        <div
+            className="flex items-center space-x-2 transition"
+            onClick={toggleIcon}
+        >
+            <span
+                className="tooltip tooltip-secondary"
+                data-tip="Offie shuts down at the hour of choice"
             >
-                {isDelayMode ? "⌛" : "⏰"}
-            </div>
+                ⏰
+            </span>
+            <input type="checkbox" className="toggle" />
+            <span
+                className="tooltip tooltip-secondary"
+                data-tip="Offie shuts down after the delay of choice"
+            >
+                ⌛
+            </span>
         </div>
     );
 };
