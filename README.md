@@ -1,4 +1,6 @@
-# Offie README
+# Offie
+
+![Offie Screenshot](assets/main-screen.png)
 
 ## Overview
 
@@ -6,10 +8,12 @@ Offie is an application designed to provide a simple and efficient way to shut d
 
 ## Features
 
-Offie offers two modes to shutdown the computer
+Offie offers two convenient shutdown modes:
 
--   based on the time you set
--   based on a delay from the current time
+-   **Time-based shutdown** - Schedule shutdown at a specific time
+-   **Delay-based shutdown** - Set a countdown timer for shutdown after a specified duration
+
+The application displays the current time and provides intuitive controls for managing your scheduled shutdown.
 
 ## Installation
 
